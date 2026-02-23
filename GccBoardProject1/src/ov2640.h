@@ -44,9 +44,11 @@
  * Support and FAQ: visit <a href="http://www.atmel.com/design-support/">Atmel Support</a>
  */
 
+
 #ifndef OV2640_H_INCLUDED
 #define OV2640_H_INCLUDED
 
+#include <asf.h>
 #include "compiler.h"
 #include "board.h"
 #include "twi.h"
