@@ -7,9 +7,10 @@
 
 
 #include "wifi.h"
+#include <assert.h>
+#include <string.h>
 #include <stdio.h>
 #include <asf.h>
-
 
 volatile char input_line_wifi[MAX_INPUT_WIFI];
 volatile uint32_t received_byte_wifi = 0;
@@ -198,7 +199,7 @@ void configure_wifi_provision_pin(void){
 // configuration of SPI port and interrupts used to send images to the ESP32
 
 void configure_spi(void){
-	gpio_configure_pin(SPI_MISO_GPIO, SPIO_MISO_FLAGS);
+	gpio_configure_pin(SPI_MISO_GPIO, SPI_MISO_FLAGS);
 	gpio_configure_pin(SPI_MOSI_GPIO, SPI_MOSI_FLAGS);
 	gpio_configure_pin(SPI_SPK_GPIO, SPI_SPCK_FLAGS);
 	gpio_configure_pin(SPI_NPCS0_GPIO, SPI_NPCS0_FLAGS);

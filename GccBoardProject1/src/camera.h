@@ -10,6 +10,7 @@
 #define CAMERA_H_
 
 #include <asf.h>
+extern volatile uint32_t image_len;
 
 void init_vsync_interrupts(void);
 

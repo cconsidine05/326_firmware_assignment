@@ -22,7 +22,7 @@ uint16_t g_us_cap_line = IMAGE_WIDTH * 2;
 static volatile uint32_t g_ul_vsync_flag = false;
 
 // Image length
-extern uint32_t image_len;
+volatile uint32_t image_len = 0;
 
 static void vsync_handler(uint32_t ul_id, uint32_t ul_mask)
 {
@@ -137,7 +137,11 @@ void init_camera(void) {
 	// XCLK - PA17
 	gpio_configure_pin(PIN_PCK0, PIN_PCK0_FLAGS);
 	
-
+	// SDA
+	// SCL
+	gpio_configure_pin(OV_SCL_GPIO, PIO_PERIPH_A);
+	gpio_configure_pin(OV_SDA_GPIO, PIO_PERIPH_A);
+	
 	pmc_enable_pck(0);
 	while (!(PMC->PMC_SR & PMC_SR_PCKRDY0)) {}
 	

@@ -8,6 +8,7 @@
 
 #ifndef WIFI_H_
 #define WIFI_H_
+#include <asf.h>
 
 #define WIFI_USART				USART0
 #define WIFI_USART_ID			ID_USART0
@@ -30,9 +31,9 @@ extern volatile bool wifi_comm_success;
 
 #define ALL_INTERRUPT_MASK 0xffffffff
 
-#define WIFI_COMM_PIN_NUM			PIO_PB10
-#define WIFI_COMM_PIO				PIOB
-#define WIFI_COMM_ID				ID_PIOB
+#define WIFI_COMM_PIN_NUM			PIO_PA0
+#define WIFI_COMM_PIO				PIOA
+#define WIFI_COMM_ID				ID_PIOA
 #define WIFI_COMM_ATTR				PIO_IT_RISE_EDGE
 
 #define WIFI_PROV_PIN				PIO_PB2_IDX
@@ -41,6 +42,18 @@ extern volatile bool wifi_comm_success;
 #define WIFI_PROV_MASK				PIO_PB2 
 #define WIFI_PROV_ATTR				(PIO_PULLUP | PIO_DEBOUNCE | PIO_IT_FALL_EDGE)
 
+#define SPI_NPCS0_GPIO          (PIO_PA16_IDX)
+#define SPI_NPCS0_FLAGS         (PIO_PERIPH_A | PIO_DEFAULT)
+
+// SPI Chip Select Pin (NPCS0 is usually PA11 on SAM4S)
+
+// SPI Configuration Settings
+#define SPI_CHIP_SEL            0   // We are using Chip Select 0
+#define SPI_CHIP_PCS            spi_get_pcs(SPI_CHIP_SEL)
+
+// Clock Polarity and Phase
+#define SPI_CLK_POLARITY        0
+#define SPI_CLK_PHASE           0
 //#define PUSH_BUTTON_ID ID_PIOA
 //#define PUSH_BUTTON_PIO  PIOA
 //#define PUSH_BUTTON_PIN_MSK PIO_PA23
@@ -52,13 +65,13 @@ extern volatile bool wifi_comm_success;
 #define PIN_USART0_RXD_FLAGS	(PIO_PERIPH_A | PIO_PULLUP)
 #define PIN_USART0_TXD_FLAGS	(PIO_PERIPH_A | PIO_PULLUP)
 
-#define SPI_MISO_GPIO			(PIO_PA12_IDX)
+#define SPI_MISO_GPIO			(PIO_PA17_IDX)
 #define SPI_MISO_FLAGS			(PIO_PERIPH_A | PIO_DEFAULT)
 
-#define SPI_MOSI_GPIO			(PIO_PA13_IDX)
+#define SPI_MOSI_GPIO			(PIO_PA18_IDX)
 #define SPI_MOSI_FLAGS			(PIO_PERIPH_A | PIO_DEFAULT)
 
-#define SPI_SPK_GPIO			(PIO_PA14_IDX)
+#define SPI_SPK_GPIO			(PIO_PA19_IDX)
 #define SPI_SPCK_FLAGS			(PIO_PERIPH_A | PIO_DEFAULT)
 
 // Just added these things now:
