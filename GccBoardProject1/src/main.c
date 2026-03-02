@@ -29,12 +29,23 @@
  * Support and FAQ: visit <a href="https://www.microchip.com/support/">Microchip Support</a>
  */
 #include <asf.h>
+#include "camera.h"
 
 int main (void)
 {
 	/* Insert system clock initialization code here (sysclk_init()). */
-
+	sysclk_init();
 	board_init();
-
+	
+	// camera init functions
+	init_camera();
+	init_vsync_interrupts();
+	pio_capture_init(OV_DATA_BUS_PIO, ID_PIOA);  
+	configure_camera();
+	
+	
+	while(1) {
+		start_capture();
+	}
 	/* Insert application code here, after the board has been initialized. */
 }

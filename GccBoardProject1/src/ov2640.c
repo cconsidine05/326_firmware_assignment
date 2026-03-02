@@ -49,6 +49,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <asf.h>
 
 #ifdef __cplusplus
 extern "C" {
